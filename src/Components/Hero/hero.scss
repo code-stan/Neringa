@@ -1,0 +1,114 @@
+@import "../../Styles/style.scss";
+
+// HERO HEADER
+.header h1{
+    font-size: 20vw;
+    text-align: center;
+    font-family: Brogadier, system-ui, -apple-system, serif;
+    cursor: pointer;
+    user-select: none;
+}
+
+// HERO MARQUEE
+@keyframes marqueeAnim {
+    100%{
+        transform: translateX(-50%)
+    }
+}
+
+.marquee{
+    overflow-x: hidden;
+    &:hover .marquee-div{
+        animation-play-state: paused;
+    } 
+    &, .marquee-div{
+        display: flex;
+        white-space: nowrap;
+    }
+    .marquee-div{
+        animation: marqueeAnim 8s infinite linear forwards;
+        
+    }
+    button{
+        padding-inline: 1.5rem;
+        margin-inline: 1rem;
+        text-transform: uppercase;
+    }
+}
+
+// HERO MODAL
+.modal{
+    transform: translateY(85vh);
+    position: fixed;
+    inset: auto 0 0 auto;
+    background-color: #c6c4c6;
+    padding: 4rem 3rem;
+    max-height: 85vh;
+    max-width: 60vw;
+    overflow-y: scroll;
+    scrollbar-width: 0rem;
+    transition: transform .65s;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    
+    &-nav{
+        @include flex(center, space-between);
+        padding-bottom: 4rem;
+
+        .name{
+            font-size: 2vw;
+            font-weight: 600;
+            text-transform: capitalize;
+            flex: 3
+        }
+        .btn-container{
+            flex: 2;
+
+            button{
+                font-size: 1.6vw;
+                color: #888;
+            }
+        }
+    }
+    &-content{
+        .text{
+            @extend .modal-nav; 
+            align-items: start;
+            font-weight: 500;
+
+            a{flex: 3}
+            p{flex: 2}
+        }
+        .image{
+            overflow: hidden;
+            @include flex(center, center);
+
+            img{
+                max-width: 100%;
+                width: 100%;
+                object-fit: cover;
+                aspect-ratio: 1;
+            }
+        }
+    }
+}
+// HERO FOOTER 
+.footer{
+    @include flex(center, space-between);
+    gap: 3rem;
+    margin-top: auto;
+    padding: 3rem;
+
+    &, button{
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .policies{
+        @include flex(center, center);
+        gap: 3rem;
+    }
+    
+}

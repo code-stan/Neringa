@@ -1,0 +1,13 @@
+$fs-600: 1.2vw;
+
+@mixin flex($align, $justify){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin media($size){
+    @media screen and (max-width: $size){
+        @content;
+    }
+}
