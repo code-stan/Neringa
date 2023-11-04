@@ -1,9 +1,12 @@
 import { useEffect, useRef } from "react";
 import { useHeroContext } from "../hook/useServiceName";
+import { servicesDesc } from "./data";
 
 export default function HeroModal() {
-  const { modal, serviceName} = useHeroContext()
+  const { modal, serviceName, indexNo} = useHeroContext();
   let translateValue = useRef("translateY(85vh)");
+  const imageRef = useRef(null)
+
   function mobileWidth(){
     if(window.innerWidth <= 1200){
       translateValue.current = "translateY(100vh)"
@@ -11,14 +14,25 @@ export default function HeroModal() {
   }
   mobileWidth()
   useEffect(()=>{
+    let imageEl = imageRef.current;
     function forMobile(){
       mobileWidth()
-       console.log(translateValue.current)
+    }
+    function onFullscreen(){
+      if(!document.fullscreenElement){
+        imageEl.requestFullscreen()
+      }
+      else{
+        document.exitFullscreen()
+      }
     }
     window.addEventListener("resize", forMobile);
-
+    imageEl.addEventListener("dblclick", onFullscreen)
+    
+    
     return ()=>{
       window.removeEventListener("resize", forMobile); 
+      imageEl.removeEventListener("dblclick", onFullscreen)
     }
   }, [])
   
@@ -36,10 +50,10 @@ export default function HeroModal() {
         <div className="modal-content">
             <div className="text">
                 <a href="#" target="_blank">View Site</a>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis quia error totam ea in dolore architecto sed praesentium iure exercitationem. Nostrum officia magni repellendus eos minus natus illum voluptate corporis.</p>
+                <p>{servicesDesc[indexNo].servicesDesc}</p>
             </div>
             <div className="image">
-                <img src={`./Assets/${serviceName}.jpg`} alt="" />
+                <img src={`./Assets/${serviceName}.jpeg`} alt="" ref={imageRef} />
             </div>
         </div>
     </section>

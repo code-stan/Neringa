@@ -3,12 +3,13 @@ import { useRef } from "react";
 import { services } from "./data"
 import { useHeroContext } from "../hook/useServiceName"
 
-function ServiceOption({service}){
+function ServiceOption({service, index}){
     const btnRef = useRef(null)
-    const {modal, setServiceName} = useHeroContext();
+    const {modal, setServiceName, setIndexNo} = useHeroContext();
 
     function onBtnClick(){
         setServiceName(btnRef.current.textContent);
+        setIndexNo(index)
         modal.current.style.transform = "translateY(0)";
     }  
     return(
@@ -24,14 +25,14 @@ export default function HeroMarquee() {
             <div className="marquee-childEl">
                 {services.map((data, i)=>{
                     return(
-                        <ServiceOption key={i} {...data}/>
+                        <ServiceOption key={i} index={i} {...data}/>
                     )
                 })}
             </div>
             <div className="marquee-childEl">
                 {services.map((data, i)=>{
                     return(
-                        <ServiceOption key={i} {...data}/>
+                        <ServiceOption key={i} index={i}{...data}/>
                     )
                 })}
             </div>
@@ -40,14 +41,14 @@ export default function HeroMarquee() {
             <div className="marquee-childEl">
                 {services.map((data, i)=>{
                     return(
-                        <ServiceOption key={i} {...data}/>
+                        <ServiceOption key={i} index={i}{...data}/>
                     )
                 })}
             </div>
             <div className="marquee-childEl">
                 {services.map((data, i)=>{
                     return(
-                        <ServiceOption key={i} {...data}/>
+                        <ServiceOption key={i} index={i}{...data}/>
                     )
                 })}
             </div>

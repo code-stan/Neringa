@@ -8,7 +8,8 @@ import HeroFooter from "./HeroFooter";
 import "./hero.scss"
 
 export default function Hero() {
-  const [serviceName, setServiceName] = useState("name");
+  const [serviceName, setServiceName] = useState("service");
+  const [indexNo, setIndexNo] = useState(0)
   const modal = useRef(null)
   useEffect(()=>{
     const colorPalette = ["596b4b", "5253ba", "ab9985", "906892", "f0c73f", "d7d6d5", "c6c4c6", "9a7e5d", "5e624d", "8b2e1d"];
@@ -24,7 +25,7 @@ export default function Hero() {
   
 
   return (
-    <heroContext.Provider value={{serviceName, setServiceName, modal}}>
+    <heroContext.Provider value={{serviceName, setServiceName, modal, indexNo, setIndexNo}}>
         <section className="hero">
             <HeroHeader/>
             <HeroMarquee/>
