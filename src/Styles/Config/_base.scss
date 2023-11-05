@@ -1,16 +1,16 @@
 @font-face {
-    font-family: Brogadier;
-    src: url("./fonts/brogadier.ttf");
+    font-family: "Brogadier";
+    src: url("./fonts/brogadier.ttf"), format('ttf');
 }
 @font-face {
-    font-family: Robotoo;
-    src: url("./fonts/Roboto-Regular.ttf");
+    font-family: "Robotoo";
+    src: url("./fonts/Roboto-Regular.ttf"), format('ttf');
 }
 
 *,
 *::before,
 *::after {
-    font-family: Robotoo,system-ui, -apple-system, sans-serif;
+    font-family: "Robotoo",system-ui, -apple-system, sans-serif;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
